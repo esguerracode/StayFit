@@ -122,10 +122,15 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 24px 40px;
-            position: absolute;
+            padding: 16px 40px;
+            position: fixed;
             top: 0; left: 0; width: 100%;
-            z-index: 100;
+            z-index: 1000;
+            background: rgba(248, 249, 245, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
         }
         .header-logo { height: 28px; }
         .header-nav { display: flex; gap: 32px; }
@@ -139,7 +144,31 @@
         
         @media (max-width: 768px) {
             .header-nav { display: none; }
-            header { padding: 20px 24px; }
+            header { padding: 12px 24px; }
+        }
+
+        /* --- Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+
+        @keyframes textPop {
+            0% { opacity: 0; transform: translateX(-50%) translateY(30px) scale(0.95); }
+            100% { opacity: 0.04; transform: translateX(-50%) translateY(0) scale(1); }
+        }
+        @keyframes floatIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         /* --- Hero --- */
@@ -163,14 +192,16 @@
             font-size: 18vw;
             font-weight: 700;
             color: var(--text-dark);
-            opacity: 0.04;
+            opacity: 0;
             white-space: nowrap;
             letter-spacing: -4px;
             z-index: 1;
             line-height: 0.8;
             background: linear-gradient(180deg, var(--text-dark) 0%, rgba(31,34,30,0) 100%);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: textPop 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
         }
 
         .hero-content {
@@ -209,10 +240,12 @@
             align-items: center;
             gap: 12px;
             z-index: 10;
+            opacity: 0;
+            animation: floatIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-        .badge-1 { top: 15%; left: 15%; }
-        .badge-2 { bottom: 15%; left: 10%; flex-direction: column; text-align: left; align-items: flex-start; border-radius: 20px; padding: 20px; max-width: 200px; }
-        .badge-3 { top: 30%; right: 12%; border-radius: 50%; width: 100px; height: 100px; padding: 0; justify-content: center; background: var(--accent); color: white; display: flex; flex-direction: column; text-align: center; }
+        .badge-1 { top: 15%; left: 15%; animation-delay: 0.6s; }
+        .badge-2 { bottom: 15%; left: 10%; flex-direction: column; text-align: left; align-items: flex-start; border-radius: 20px; padding: 20px; max-width: 200px; animation-delay: 0.8s; }
+        .badge-3 { top: 30%; right: 12%; border-radius: 50%; width: 100px; height: 100px; padding: 0; justify-content: center; background: var(--accent); color: white; display: flex; flex-direction: column; text-align: center; animation-delay: 1s; }
         .badge-3 span { font-size: 0.7rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
         .badge-3 svg { width: 24px; margin-bottom: 4px; }
         
@@ -523,40 +556,40 @@
 
     <!-- Why Choose Bento Section -->
     <section class="section container" id="beneficios">
-        <div class="text-center">
+        <div class="text-center reveal">
             <h2 class="section-title">¿Por qué elegir StayFit?</h2>
             <p class="section-subtitle">Ciencia natural diseñada para pérdida de peso saludable y sostenible.</p>
         </div>
 
         <div class="bento-grid">
             <!-- Top Left -->
-            <div class="bento-card b-[...]" style="background: var(--bento-peach);">
+            <div class="bento-card b-1 reveal delay-1" style="background: var(--bento-peach);">
                 <div class="bento-icon" style="background:#fff; color: #ff8a65;">🌿</div>
                 <h3>Ingredientes Naturales</h3>
                 <p>Mezcla con precisión clínica utilizando los extractos botánicos más puros que la naturaleza puede ofrecer.</p>
             </div>
             
             <!-- Center Image -->
-            <div class="bento-card bento-center">
+            <div class="bento-card bento-center reveal delay-2">
                 <img src="./Media/Fotos publicitarias/CC por Antarctica Films Argentina.png" class="bento-img-full" alt="Lifestyle">
             </div>
             
             <!-- Top Right -->
-            <div class="bento-card" style="background: var(--surface-white); border: 1px solid rgba(0,0,0,0.05);">
+            <div class="bento-card reveal delay-3" style="background: var(--surface-white); border: 1px solid rgba(0,0,0,0.05);">
                 <div class="bento-icon" style="background:var(--bento-lilac); color: var(--secondary-brand);">⚖️</div>
                 <h3>Control Efectivo</h3>
                 <p>Equilibra tu apetito de forma natural para que tomes mejores decisiones nutricionales sin ansiedad.</p>
             </div>
             
             <!-- Bottom Left -->
-            <div class="bento-card" style="background: var(--surface-white); border: 1px solid rgba(0,0,0,0.05);">
+            <div class="bento-card reveal delay-1" style="background: var(--surface-white); border: 1px solid rgba(0,0,0,0.05);">
                 <div class="bento-icon" style="background:var(--bento-yellow); color: #eab308;">🛡️</div>
                 <h3>Fórmula Premium</h3>
                 <p>Desarrollada bajo altos estándares. Sin efecto rebote y enfocada en energía sostenida.</p>
             </div>
             
             <!-- Bottom Right -->
-            <div class="bento-card" style="background: var(--bento-mint);">
+            <div class="bento-card reveal delay-3" style="background: var(--bento-mint);">
                 <div class="bento-icon" style="background:#fff; color: #10b981;">✅</div>
                 <h3>Seguro y Confiable</h3>
                 <p>Nuestras cápsulas y tés son 100% seguros y aptos para quienes buscan bienestar proactivo.</p>
@@ -567,7 +600,7 @@
 
     <!-- Featured Essentials -->
     <section class="section container" id="cat">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
+        <div class="reveal" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
             <div>
                 <h2 class="section-title" style="margin-bottom:0;">Fórmulas Esenciales</h2>
             </div>
@@ -578,7 +611,7 @@
 
         <div class="prod-grid">
             <!-- Card 1 -->
-            <div class="prod-card c-pills">
+            <div class="prod-card c-pills reveal delay-1">
                 <span class="prod-tag">MÁS VENDIDO</span>
                 <div class="prod-img-container">
                     <img src="./Media/Fotos de producto/Ahora_entregame_el_blanco__2k_delpmaspu.png" class="prod-img" alt="Pills">
@@ -591,7 +624,7 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="prod-card c-green">
+            <div class="prod-card c-green reveal delay-2">
                 <span class="prod-tag">DETOX</span>
                 <div class="prod-img-container">
                     <img src="./Media/Fotos de producto/te verde.png" class="prod-img" alt="Tea Verde">
@@ -604,7 +637,7 @@
             </div>
 
             <!-- Card 3 -->
-            <div class="prod-card c-orange">
+            <div class="prod-card c-orange reveal delay-3">
                 <span class="prod-tag">QUEMA GRASA</span>
                 <div class="prod-img-container">
                     <img src="./Media/Fotos de producto/Te naranja.png" class="prod-img" alt="Tea Naranja">
@@ -617,7 +650,7 @@
             </div>
 
             <!-- Card 4 -->
-            <div class="prod-card c-purple">
+            <div class="prod-card c-purple reveal delay-4">
                 <span class="prod-tag">DIGESTIVO</span>
                 <div class="prod-img-container">
                     <img src="./Media/Fotos de producto/te morado.png" class="prod-img" alt="Tea Morado">
@@ -632,12 +665,12 @@
     </section>
 
     <!-- 3 Easy Steps (Split Section) -->
-    <section class="split-section" id="funciona">
+    <section class="split-section reveal" id="funciona">
         <div class="split-content">
-            <h2>Toma el control de tu figura en 3 simples pasos</h2>
-            <p>Descubre lo fácil que es potenciar tu bienestar físico y mental de forma diaria a través de nuestro protocolo guiado.</p>
+            <h2 class="reveal delay-1">Toma el control de tu figura en 3 simples pasos</h2>
+            <p class="reveal delay-2">Descubre lo fácil que es potenciar tu bienestar físico y mental de forma diaria a través de nuestro protocolo guiado.</p>
             
-            <div class="accordion">
+            <div class="accordion reveal delay-3">
                 <div class="acc-item active">
                     <div class="acc-header">1. Elige tu Suplemento <span>&#x2304;</span></div>
                     <div class="acc-body" style="display:block;">Evalúa tus objetivos y selecciona nuestra gama de pastillas o tés funcionales diseñados para apoyar tus planes diarios.</div>
@@ -652,10 +685,10 @@
                 </div>
             </div>
             
-            <a href="stayfit_pills.html" class="btn btn-primary" style="margin-top: 32px;">Comprar Ahora →</a>
+            <a href="stayfit_pills.html" class="btn btn-primary reveal delay-4" style="margin-top: 32px;">Comprar Ahora →</a>
         </div>
         
-        <div class="split-img-wrapper">
+        <div class="split-img-wrapper reveal delay-2">
             <img src="./Media/Fotos publicitarias/Keep_the_product_from_the_reference_image_exactly__delpmaspu (2).png" alt="Lifestyle 3 steps" class="split-img">
             <div class="img-badge">
                 <img src="./Media/Fotos de producto/Ahora_entregame_el_blanco__2k_delpmaspu.png" alt="Mini">
@@ -669,14 +702,14 @@
 
     <!-- Testimonials -->
     <section class="section container" id="testi">
-        <div class="text-center">
+        <div class="text-center reveal">
             <h2 class="section-title">Lo que dicen nuestras clientas</h2>
             <p class="section-subtitle">Historias reales de personas que vivieron la diferencia de forma natural.</p>
         </div>
 
         <div class="testi-grid">
             <!-- Left Featured (Video or Pic) -->
-            <div class="testi-featured">
+            <div class="testi-featured reveal delay-1">
                 <img src="./Media/Fotos publicitarias/Keep_the_product_from_the_reference_image_exactly__delpmaspu.png" class="testi-feat-img" alt="Testimonial">
                 <div class="play-btn">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -684,7 +717,7 @@
             </div>
             
             <!-- Right Main Review -->
-            <div class="testi-main-card">
+            <div class="testi-main-card reveal delay-2">
                 <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/></svg>
                 <div class="stars">★★★★★</div>
                 <p class="testi-quote">"Usar StayFit ha transformado por completo mi rutina diaria. Los suplementos no solo redujeron mi ansiedad por el dulce, sino que noto un cambio total en mi energía y enfoque."</p>
@@ -700,7 +733,7 @@
 
         <!-- Small grid text testimonials -->
         <div class="testi-small-grid" style="margin-top:24px;">
-            <div class="testi-small">
+            <div class="testi-small reveal delay-1">
                 <div class="stars">★★★★★</div>
                 <p>"Desde el primer mes noté que la ropa me quedaba diferente. Las pastillas me quitan el hambre de más y no me dan taquicardia. Excelente producto y súper limpio."</p>
                 <div class="testi-author">
@@ -708,7 +741,7 @@
                     <div><h4>Laura B.</h4></div>
                 </div>
             </div>
-            <div class="testi-small">
+            <div class="testi-small reveal delay-2">
                 <div class="stars">★★★★★</div>
                 <p>"Por primera vez en años pude ser constante con un tratamiento. El té morado es espectacular para el sistema digestivo. Hacen exactamente lo prometido."</p>
                 <div class="testi-author">
@@ -716,7 +749,7 @@
                     <div><h4>Sara M.</h4></div>
                 </div>
             </div>
-            <div class="testi-small">
+            <div class="testi-small reveal delay-3">
                 <div class="stars">★★★★★</div>
                 <p>"Las fórmulas son puras y limpias, mi nutricionista las revisó y me dio luz verde. Excelentes si buscas resultados sostenibles sin químicos raros."</p>
                 <div class="testi-author">
@@ -729,13 +762,13 @@
 
 
     <!-- Bottom CTA -->
-    <section class="bottom-cta">
+    <section class="bottom-cta reveal">
         <div class="cta-content">
-            <h2>Empieza tu camino hacia tu mejor versión</h2>
-            <p>Da el primer paso hoy mismo experimentando la diferencia que brinda StayFit.</p>
-            <a href="stayfit_pills.html" class="btn btn-primary">Comprar Ahora →</a>
+            <h2 class="reveal delay-1">Empieza tu camino hacia tu mejor versión</h2>
+            <p class="reveal delay-2">Da el primer paso hoy mismo experimentando la diferencia que brinda StayFit.</p>
+            <a href="stayfit_pills.html" class="btn btn-primary reveal delay-3">Comprar Ahora →</a>
         </div>
-        <img src="./Media/Fotos de producto/imagen con todos los productos.png" class="cta-img" alt="Todos los productos">
+        <img src="./Media/Fotos de producto/imagen con todos los productos.png" class="cta-img reveal delay-2" alt="Todos los productos">
     </section>
 
     <!-- Footer -->
@@ -777,6 +810,26 @@
                 const parent = event.target.closest('.acc-item');
                 parent.classList.toggle('active');
             });
+        });
+
+        // Intersection Observer for scroll reveal animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
