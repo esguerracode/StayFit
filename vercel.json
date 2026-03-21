@@ -2,7 +2,6 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/", "destination": "/stayfit_landing.html" },
     { "source": "/usd", "destination": "/stayfit_landing_usd.html" },
     { "source": "/mayoristas", "destination": "/stayfit_mayoristas.html" }
   ],
