@@ -11,6 +11,11 @@
       "sourceType": "github",
       "computedHash": "7b72bbbbc2f475e35f5697069046d46417997c054442ee46ade10abd4224d32b"
     },
+    "n8n-node-configuration": {
+      "source": "czlonkowski/n8n-skills",
+      "sourceType": "github",
+      "computedHash": "367423ff617612507094c6f3f0cedff8440a1efe21f1b0c820de459726b2cab0"
+    },
     "n8n-workflow-patterns": {
       "source": "czlonkowski/n8n-skills",
       "sourceType": "github",

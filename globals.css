@@ -131,6 +131,15 @@ body {
     transform: translateY(20px);
     opacity: 0;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 32px 24px 24px 24px;
+        border-radius: 20px;
+    }
 }
 
 .modal-overlay.active .modal-content {
