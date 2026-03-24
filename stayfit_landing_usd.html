@@ -420,6 +420,84 @@
                 text-align: center;
             }
         }
+        /* Testimonials Premium */
+        .testi-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testi-featured {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .testi-feat-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testi-main-card {
+            background-color: var(--surface);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .stars {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .testi-quote {
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testi-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testi-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        .testi-small-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .testi-small {
+            background-color: var(--surface);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        @media (max-width: 900px) {
+            .testi-grid { grid-template-columns: 1fr; }
+            .testi-featured { min-height: 300px; }
+        }
     </style>
 </head>
 <body>
@@ -663,29 +741,48 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="section-padding">
-        <div class="container text-center">
-            <h2 class="section-title">Resultados <span>Reales</span></h2>
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                <div class="card" style="background: none; border: none;">
-                    <div class="card-body" style="background-color: var(--surface); border-radius: 20px;">
-                        <div style="font-size: 1.5rem; color: #ffd700; margin-bottom: 1rem;">★★★★★</div>
-                        <p class="card-desc" style="font-style: italic;">"Llevo ya un mes consumiendo las pills y el té de naranja. Mi metabolismo despertó y tengo muchísima más energía. Superó mis expectativas."</p>
-                        <h4 style="margin-top: 1rem;">- Laura Camila G.</h4>
+    <section class="section-padding" id="testi">
+        <div class="container">
+            <h2 class="section-title text-center">Resultados <span>Reales</span></h2>
+            
+            <div class="testi-grid">
+                <div class="testi-featured">
+                    <img src="./Media/Fotos publicitarias/satisfied_customer_lifestyle.png" class="testi-feat-img" alt="Testimonio Real">
+                </div>
+                
+                <div class="testi-main-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testi-quote">"StayFit transformed my routine. No more sugar cravings, and my energy levels are higher than ever. It's a game changer."</p>
+                    <div class="testi-author">
+                        <img src="./Media/Fotos publicitarias/laura_b.png" alt="Sarah">
+                        <div>
+                            <h4 style="margin:0;">Sarah M.</h4>
+                            <p style="margin:0; font-size:0.8rem; color:var(--text-muted);">Verified Buyer • Miami, FL</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card" style="background: none; border: none;">
-                    <div class="card-body" style="background-color: var(--surface); border-radius: 20px;">
-                        <div style="font-size: 1.5rem; color: #ffd700; margin-bottom: 1rem;">★★★★★</div>
-                        <p class="card-desc" style="font-style: italic;">"Excelente producto. Sufro todo el día con mis antojos en el trabajo y la verdad el té de frutos rojos me ha mantenido saciada."</p>
-                        <h4 style="margin-top: 1rem;">- Mariana V.</h4>
+            </div>
+
+            <div class="testi-small-grid">
+                <div class="testi-small">
+                    <div class="stars">★★★★★</div>
+                    <p>"Clothes started fitting differently after the first 3 weeks. No jitters, just clean energy."</p>
+                    <div class="testi-author">
+                        <h4 style="margin:0; font-size:1rem;">Laura B.</h4>
                     </div>
                 </div>
-                <div class="card" style="background: none; border: none;">
-                    <div class="card-body" style="background-color: var(--surface); border-radius: 20px;">
-                        <div style="font-size: 1.5rem; color: #ffd700; margin-bottom: 1rem;">★★★★★</div>
-                        <p class="card-desc" style="font-style: italic;">"Compré el combo mensual. Lo súper recomiendo sobre todo para evitar retener líquidos después de hacer ejercicio. Es de alta calidad."</p>
-                        <h4 style="margin-top: 1rem;">- Estefanía L.</h4>
+                <div class="testi-small">
+                    <div class="stars">★★★★★</div>
+                    <p>"The Detox Tea is espectacular. Best tasting supplement I've ever tried."</p>
+                    <div class="testi-author">
+                        <h4 style="margin:0; font-size:1rem;">Camila T.</h4>
+                    </div>
+                </div>
+                <div class="testi-small">
+                    <div class="stars">★★★★★</div>
+                    <p>"My nutritionist approved the formulas. Highly recommended for sustainable results."</p>
+                    <div class="testi-author">
+                        <h4 style="margin:0; font-size:1rem;">Diana P.</h4>
                     </div>
                 </div>
             </div>

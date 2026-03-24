@@ -319,21 +319,56 @@
                     <input type="text" class="form-control" name="name" placeholder="Ej: Juan Pérez" required>
                 </div>
 
-                <div class="form-group">
-                    <label>Teléfono / WhatsApp</label>
-                    <input type="tel" class="form-control" name="phone" placeholder="Ej: 3001234567" required>
+                <div class="form-group row" style="display: flex; flex-wrap: wrap; gap: 16px;">
+                    <div style="flex: 1; min-width: 120px;">
+                        <label>País / Región</label>
+                        <select class="form-control" name="country" id="country-select" required>
+                            <option value="Colombia">🇨🇴 Colombia</option>
+                            <option value="Estados Unidos">🇺🇸 Estados Unidos</option>
+                        </select>
+                    </div>
+                    <div style="flex: 2; min-width: 200px;">
+                        <label>Teléfono / WhatsApp</label>
+                        <div style="display: flex;">
+                            <span id="country-code" style="display: flex; align-items: center; padding: 0 12px; background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.1); border-right: none; border-radius: 12px 0 0 12px; font-weight: 600; font-family: var(--font-headers);">+57</span>
+                            <input type="tel" class="form-control" name="phone" id="phone-input" placeholder="300 123 4567" style="border-radius: 0 12px 12px 0;" required>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Sabor Preferido</label>
-                    <select class="form-control" name="flavor" required>
-                        <option value="" disabled selected>Elige tu sabor</option>
-                        <option value="🍊 Naranja">🍊 Naranja</option>
-                        <option value="🍍 Piña">🍍 Piña</option>
-                        <option value="🍓 Frutos Rojos">🍓 Frutos Rojos</option>
-                        <option value="🍋 Limón">🍋 Limón</option>
-                        <option value="🍇 Uva">🍇 Uva</option>
-                    </select>
+                <div class="form-group" id="id-group">
+                    <label id="id-label">Cédula (Colombia)</label>
+                    <input type="text" class="form-control" name="identification" id="id-input" placeholder="Ej: 10203040" required>
+                </div>
+
+                <div class="form-group" id="flavor-group-container">
+                    <label id="flavor-label">Sabor Preferido</label>
+                    <div id="flavor-selects">
+                        <select class="form-control" name="flavor1" id="flavor1" style="margin-bottom: 8px;">
+                            <option value="" disabled selected>Elige tu sabor</option>
+                            <option value="🍊 Naranja">🍊 Naranja</option>
+                            <option value="🍍 Piña">🍍 Piña</option>
+                            <option value="🍓 Frutos Rojos">🍓 Frutos Rojos</option>
+                            <option value="🍋 Limón">🍋 Limón</option>
+                            <option value="🍇 Uva">🍇 Uva</option>
+                        </select>
+                        <select class="form-control" name="flavor2" id="flavor2" style="margin-bottom: 8px; display: none;">
+                            <option value="" disabled selected>Elige tu 2do sabor</option>
+                            <option value="🍊 Naranja">🍊 Naranja</option>
+                            <option value="🍍 Piña">🍍 Piña</option>
+                            <option value="🍓 Frutos Rojos">🍓 Frutos Rojos</option>
+                            <option value="🍋 Limón">🍋 Limón</option>
+                            <option value="🍇 Uva">🍇 Uva</option>
+                        </select>
+                        <select class="form-control" name="flavor3" id="flavor3" style="display: none;">
+                            <option value="" disabled selected>Elige tu 3er sabor</option>
+                            <option value="🍊 Naranja">🍊 Naranja</option>
+                            <option value="🍍 Piña">🍍 Piña</option>
+                            <option value="🍓 Frutos Rojos">🍓 Frutos Rojos</option>
+                            <option value="🍋 Limón">🍋 Limón</option>
+                            <option value="🍇 Uva">🍇 Uva</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -342,7 +377,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Cantidad (Cajas)</label>
+                    <label>Cantidad (Unidades)</label>
                     <div class="qty-control">
                         <button type="button" class="qty-btn" id="qty-minus">−</button>
                         <span id="qty-val" style="width: 30px; text-align: center; font-weight: 700;">1</span>
@@ -351,7 +386,7 @@
                     <input type="hidden" name="quantity" id="quantity-input" value="1">
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%; height: 60px; margin-top: 12px; background: #C0392B;">
+                <button type="submit" class="btn btn-primary" style="width: 100%; height: 60px; margin-top: 12px;">
                     ✅ Confirmar por WhatsApp
                 </button>
             </form>
