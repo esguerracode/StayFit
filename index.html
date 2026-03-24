@@ -305,7 +305,7 @@
         }
         /* Top Left: Reviews */
         .badge-1 {
-            top: 25%; left: 8%; padding: 12px 20px; gap: 12px;
+            top: 22%; left: 12%; padding: 12px 20px; gap: 12px;
             animation-delay: 1.2s; border-radius: var(--radius-full);
         }
         .badge-1 .b-stars { color: #EAB308; font-size: 1.2rem; }
@@ -315,43 +315,31 @@
 
         /* Bottom Left: Description */
         .badge-2 {
-            bottom: 25%; left: 8%; flex-direction: row; gap: 16px;
-            padding: 16px; max-width: 250px; animation-delay: 1.4s;
+            bottom: 20%; left: 12%; flex-direction: row; gap: 16px;
+            padding: 16px; max-width: 280px; animation-delay: 1.4s;
         }
         .badge-2 img { width: 48px; height: 48px; border-radius: var(--radius-sm); object-fit: cover; background: var(--bento-mint); }
-        .badge-2 p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.3; margin:0; font-family:var(--font-main);}
+        .badge-2 p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; margin:0; font-family:var(--font-main);}
 
-        /* Top Right: Energy Mode */
+        /* Center / Top Right: Energy Mode */
         .badge-3 {
-            top: 35%; right: 5%; flex-direction: column; align-items: flex-start;
-            padding: 16px; gap: 12px; max-width: 200px; animation-delay: 1.6s;
+            top: 35%; right: 12%; flex-direction: column; align-items: flex-start;
+            padding: 16px; gap: 12px; max-width: 220px; animation-delay: 1.6s;
         }
         .b3-tags { display: flex; gap: 6px; font-size: 0.65rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); }
-        .badge-3 h4 { font-size: 0.9rem; margin: 0; line-height: 1.2; font-family: var(--font-headers);}
-        .badge-3 img { width: 100%; height: 80px; border-radius: var(--radius-sm); object-fit: cover; }
+        .badge-3 h4 { font-size: 0.95rem; margin: 0; line-height: 1.2; font-family: var(--font-headers);}
+        .badge-3 img { width: 100%; height: 90px; border-radius: var(--radius-sm); object-fit: cover; }
 
-        /* Center Spinning Seal */
-        .badge-seal {
+        /* Center Logo */
+        .hero-center-logo {
             position: absolute;
-            top: 30%; left: 50%; transform: translate(-180%, -50%);
-            width: 140px; height: 140px; /* Made slightly larger for visibility */
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 320px;
             z-index: 15;
             animation: floatIn 1s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
             opacity: 0;
-            display: flex; justify-content: center; align-items: center;
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.1));
         }
-        .seal-text {
-            position: absolute; width: 100%; height: 100%;
-            animation: spin 12s linear infinite;
-        }
-        .seal-inner {
-            width: 56px; height: 56px; background: #85B86A; /* Fresh green color */
-            border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            color: white; font-weight: bold; cursor: pointer; transition: transform 0.3s ease;
-        }
-        .seal-inner:hover { transform: scale(1.1); }
-        
-        @keyframes spin { 100% { transform: rotate(360deg); } }
 
         @media (max-width: 1024px) {
             .badge-1 { top: 15%; left: 5%; }
@@ -667,20 +655,11 @@
             
             <div class="floating-badge badge-2">
                 <img src="./Media/Fotos publicitarias/CC por Antarctica Films Argentina.png" alt="Tea">
-                <p>Apoya tu proceso de bienestar con extractos herbales purificados para tu salud.</p>
+                <p>Apoya tu proceso de bienestar con <br><strong>extractos herbales purificados</strong> para tu salud.</p>
             </div>
 
-            <div class="badge-seal">
-                <svg viewBox="0 0 100 100" class="seal-text">
-                    <path id="curve" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="transparent" />
-                    <text font-size="10.5" fill="var(--text-dark)" font-weight="600" letter-spacing="1">
-                        <textPath href="#curve">100% NATURAL • PREMIUM • SÚPER EFECTIVO • </textPath>
-                    </text>
-                </svg>
-                <div class="seal-inner">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </div>
-            </div>
+            <!-- Central Stayfit Logo -->
+            <img src="./Media/Logos/Logo negro.svg" class="hero-center-logo" alt="StayFit Logo">
 
             <div class="floating-badge badge-3">
                 <div class="b3-tags"><span>ENERGÍA</span><span>•</span><span>METABOLISMO</span></div>
