@@ -123,19 +123,24 @@
                 position: fixed;
                 bottom: 0;
                 left: 0;
-                width: 100%;
+                width: 100vw;
+                max-width: 100%;
+                box-sizing: border-box;
                 background: var(--glass-bg, rgba(255,255,255,0.8));
                 backdrop-filter: var(--glass-blur, blur(10px));
                 -webkit-backdrop-filter: var(--glass-blur, blur(10px));
-                padding: 12px 20px;
+                padding: 10px 16px;
                 border-top: 1px solid var(--border, rgba(0,0,0,0.1));
                 z-index: 9999;
                 justify-content: space-between;
                 align-items: center;
+                gap: 8px;
                 box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
             }
             @media (max-width: 768px) {
                 .sticky-cta-mobile { display: flex !important; }
+                .sticky-cta-mobile .btn { padding: 8px 16px !important; font-size: 0.8rem !important; white-space: nowrap; flex-shrink: 0; }
+                .sticky-cta-mobile > div { flex-shrink: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
                 body { padding-bottom: 80px !important; }
             }
             @keyframes pulse-red {

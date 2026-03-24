@@ -97,18 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Flavor logic based on product
         const f1 = document.getElementById('flavor1');
-        const f2 = document.getElementById('flavor2');
-        const f3 = document.getElementById('flavor3');
         const fLabel = document.getElementById('flavor-label');
         
-        if (f1 && f2 && f3 && fLabel) {
+        if (f1 && fLabel) {
             // Reset state
             f1.style.display = 'block';
-            f2.style.display = 'none';
-            f3.style.display = 'none';
             f1.required = true;
-            f2.required = false;
-            f3.required = false;
             fLabel.textContent = 'Sabor Preferido';
 
             const nameLow = productName.toLowerCase();
@@ -116,20 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 f1.style.display = 'none';
                 f1.value = 'No aplica';
                 f1.required = false;
-                fLabel.textContent = 'Sabor (No aplica para pastillas)';
-            } else if (nameLow.includes('combo 2')) {
-                f2.style.display = 'block';
-                f2.required = true;
-                fLabel.textContent = 'Elige tus 2 sabores';
-            } else if (nameLow.includes('combo 3')) {
-                f2.style.display = 'block';
-                f3.style.display = 'block';
-                f2.required = true;
-                f3.required = true;
-                fLabel.textContent = 'Elige tus 3 sabores';
-            } else {
-                // If it's single tea, leave f1 required
-                f1.required = false; // We can set it false generic if we dont want to strictly block
+                fLabel.textContent = 'Sabor (No aplica)';
             }
         }
 
@@ -198,12 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
         countrySelect.addEventListener('change', (e) => {
             if (e.target.value === 'Estados Unidos') {
                 if(countryCodeSpan) countryCodeSpan.textContent = '+1';
-                if(idLabel) idLabel.textContent = 'ZIP / Postal Code';
-                if(idInput) idInput.placeholder = 'Ej: 33101';
             } else {
                 if(countryCodeSpan) countryCodeSpan.textContent = '+57';
-                if(idLabel) idLabel.textContent = 'Cédula (Colombia)';
-                if(idInput) idInput.placeholder = 'Ej: 10203040';
             }
         });
     }
