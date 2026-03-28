@@ -4,6 +4,7 @@ import { UI } from './modules/ui-engine.js';
 import { CheckoutUI } from './modules/checkout-ui.js';
 import { Sliders } from './modules/sliders.js';
 import { Loader } from './modules/loader.js';
+import { StorageWrapper } from './modules/storage.js';
 
 /**
  * StayFit Main Application (ESM Orchestration)
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initial Currency & IP Geolocation (if no local preference)
     const toggleBtn = document.getElementById('currency-toggle');
-    if (!localStorage.getItem('sf_currency')) {
+    if (!StorageWrapper.getItem('sf_currency')) {
         fetch('https://get.geojs.io/v1/ip/country.json')
             .then(r => r.json())
             .then(data => {
@@ -71,5 +72,13 @@ function initGlobalDelegation() {
         if (e.key === 'Escape') {
             UI.modal.close('order-modal');
         }
+    });
+
+    // Global Error Boundary (Safe UI)
+    window.addEventListener('error', (e) => {
+        console.warn('StayFit [ErrorBoundary]:', e.error);
+    });
+    window.addEventListener('unhandledrejection', (e) => {
+        console.warn('StayFit [ErrorBoundary Promise]:', e.reason);
     });
 }

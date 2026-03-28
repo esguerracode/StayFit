@@ -1,15 +1,16 @@
 import { CONFIG } from './config.js';
+import { StorageWrapper } from './storage.js';
 
 /**
  * billing engine: handles currency, exchange rates and price formatting.
  */
 export const Billing = {
     getCurrency() {
-        return localStorage.getItem('sf_currency') || CONFIG.CURRENCY.DEFAULT;
+        return StorageWrapper.getItem('sf_currency') || CONFIG.CURRENCY.DEFAULT;
     },
 
     setCurrency(currency) {
-        localStorage.setItem('sf_currency', currency);
+        StorageWrapper.setItem('sf_currency', currency);
         document.body.setAttribute('data-currency', currency);
         this.updateDOM();
         

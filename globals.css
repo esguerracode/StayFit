@@ -495,3 +495,49 @@ h1, h2, h3 { font-family: var(--font-heading); font-weight: 800; line-height: 1.
 .page-loader.loaded { transform: translateY(-100%); }
 .pl-progress-wrap { width: 200px; height: 2px; background: rgba(0,0,0,0.05); border-radius: 10px; overflow: hidden; }
 .pl-progress { width: 0%; height: 100%; background: var(--text-main); transition: width 0.3s; }
+
+/* ========================================================
+   WHATSAPP FLOATING BUTTON
+   ======================================================== */
+.float-wa {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 32px;
+    right: 28px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+    z-index: 1000;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    text-decoration: none;
+}
+.float-wa:hover,
+.float-wa:focus-visible {
+    transform: scale(1.12);
+    box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55);
+    outline: none;
+}
+.float-wa svg {
+    width: 34px;
+    height: 34px;
+    fill: currentColor;
+}
+
+/* En mobile: subir por encima del Sticky CTA y ajustar margen */
+@media (max-width: 768px) {
+    .float-wa {
+        width: 52px;
+        height: 52px;
+        bottom: 90px; /* libre sobre la barra sticky */
+        right: 16px;
+    }
+    .float-wa svg {
+        width: 28px;
+        height: 28px;
+    }
+}
