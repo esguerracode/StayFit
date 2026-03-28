@@ -90,15 +90,15 @@ h1, h2, h3 { font-family: var(--font-heading); font-weight: 800; line-height: 1.
 }
 
 .btn-primary { 
-    background: linear-gradient(135deg, #9D8ADB 0%, #FF758C 100%); 
+    background: linear-gradient(135deg, #7B2CBF 0%, #D8315B 100%); 
     color: #FFF; 
     padding: 16px 32px; 
-    box-shadow: 0 5px 15px rgba(255, 117, 140, 0.2);
+    box-shadow: 0 5px 15px rgba(216, 49, 91, 0.2);
 }
 .btn-primary:hover { 
-    filter: brightness(1.08);
+    filter: brightness(1.1);
     transform: translateY(-4px); 
-    box-shadow: 0 12px 30px rgba(255, 117, 140, 0.45); 
+    box-shadow: 0 12px 30px rgba(216, 49, 91, 0.4); 
 }
 
 .btn-accent { background: linear-gradient(135deg, #8A73CD 0%, #667EEA 100%); color: #FFF; padding: 16px 32px; }
@@ -110,7 +110,7 @@ h1, h2, h3 { font-family: var(--font-heading); font-weight: 800; line-height: 1.
 
 /* --- Gradients & Glassmorphism --- */
 .text-gradient {
-    background: linear-gradient(to right, #9D8ADB, #FF758C);
+    background: linear-gradient(to right, #7B2CBF, #D8315B);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
